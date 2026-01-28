@@ -862,6 +862,22 @@ p {
     color: var(--primary-color);
     margin-bottom: 25px;
     font-weight: 600;
+    margin-right: 100px; /* Tambahkan margin kanan untuk ruang badge */
+}
+
+.ingredient-badge {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: var(--gold);
+    color: var(--dark-chocolate);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(201, 169, 97, 0.4);
+    z-index: 2; /* Pastikan badge di atas konten */
 }
 
 .ingredient-quality h4 {
