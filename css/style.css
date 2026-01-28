@@ -862,7 +862,23 @@ p {
     color: var(--primary-color);
     margin-bottom: 25px;
     font-weight: 600;
-    margin-right: 100px; /* Tambahkan margin kanan untuk ruang badge */
+    margin-right: 150px; /* Tambahkan margin kanan lebih besar untuk ruang badge */
+}
+
+/* Mobile-specific fix */
+@media (max-width: 768px) {
+    .ingredient-content h3 {
+        margin-right: 0; /* Hilangkan margin di mobile */
+        margin-bottom: 60px; /* Tambahkan margin bawah buat ruang badge */
+    }
+    
+    .ingredient-badge {
+        top: auto;
+        right: auto;
+        bottom: 25px;
+        left: 25px;
+        transform: none;
+    }
 }
 
 .ingredient-badge {
