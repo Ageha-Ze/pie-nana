@@ -952,6 +952,27 @@ p {
     border-radius: 25px;
     text-align: center;
     box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+.ingredients-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(101, 67, 33, 0.6);
+    border-radius: 25px;
+    z-index: 1;
+}
+
+.ingredients-summary h3,
+.ingredients-summary p {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    max-width: 950px;
 }
 
 .ingredients-summary h3 {
