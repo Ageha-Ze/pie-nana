@@ -385,6 +385,16 @@ p {
     animation: patternMove 30s linear infinite;
 }
 
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
 @keyframes patternMove {
     0% {
         background-position: 0 0;
