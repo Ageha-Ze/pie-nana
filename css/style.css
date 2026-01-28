@@ -857,27 +857,50 @@ p {
     position: relative;
 }
 
-.ingredient-content h3 {
+/* Flex layout for title and badge */
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.title-row h3 {
     font-size: 2rem;
     color: var(--primary-color);
-    margin-bottom: 25px;
     font-weight: 600;
-    margin-right: 150px; /* Tambahkan margin kanan lebih besar untuk ruang badge */
+    margin: 0;
+    flex: 1;
+}
+
+.ingredient-badge {
+    position: static;
+    background: var(--gold);
+    color: var(--dark-chocolate);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(201, 169, 97, 0.4);
+    white-space: nowrap;
 }
 
 /* Mobile-specific fix */
 @media (max-width: 768px) {
-    .ingredient-content h3 {
-        margin-right: 0; /* Hilangkan margin di mobile */
-        margin-bottom: 60px; /* Tambahkan margin bawah buat ruang badge */
+    .title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .title-row h3 {
+        font-size: 1.8rem;
     }
     
     .ingredient-badge {
-        top: auto;
-        right: auto;
-        bottom: 25px;
-        left: 25px;
-        transform: none;
+        order: 2;
+        align-self: flex-start;
     }
 }
 
