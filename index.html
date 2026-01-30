@@ -116,6 +116,323 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    
+    <style>
+        /* Custom Order Modal Styles */
+        .order-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .order-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .order-modal {
+            background: transparent;
+            border-radius: 25px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 70px rgba(107, 68, 35, 0.4);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .order-modal-overlay.active .order-modal {
+            transform: scale(1);
+        }
+        
+        .order-modal-header {
+            background: linear-gradient(135deg, #6B4423 0%, #3E2723 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 25px 25px 0 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .order-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .order-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        .order-modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .order-modal-subtitle {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        
+        .order-modal-body {
+            padding: 30px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FCF8F4 100%);
+        }
+        
+        .product-select-item {
+            background: white;
+            border: 2px solid #F4E4C1;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-select-item:hover {
+            border-color: #D4A574;
+            box-shadow: 0 8px 25px rgba(107, 68, 35, 0.15);
+        }
+        
+        .product-select-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .product-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #D4A574;
+            border-radius: 6px;
+            cursor: pointer;
+            flex-shrink: 0;
+            accent-color: #6B4423;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            color: #3E2723;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .product-price {
+            color: #6B4423;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .quantity-control {
+            display: none;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #F4E4C1;
+        }
+        
+        .product-select-item.selected .quantity-control {
+            display: flex;
+        }
+        
+        .quantity-label {
+            font-weight: 600;
+            color: #3E2723;
+            font-size: 14px;
+        }
+        
+        .quantity-input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn.minus {
+            background: #FEE2E2;
+            color: #DC2626;
+        }
+        
+        .quantity-btn.minus:hover {
+            background: #DC2626;
+            color: white;
+        }
+        
+        .quantity-btn.plus {
+            background: #DCFCE7;
+            color: #16A34A;
+        }
+        
+        .quantity-btn.plus:hover {
+            background: #16A34A;
+            color: white;
+        }
+        
+        .quantity-input {
+            width: 70px;
+            height: 40px;
+            text-align: center;
+            border: 2px solid #D4A574;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #3E2723;
+        }
+        
+        .quantity-input:focus {
+            outline: none;
+            border-color: #6B4423;
+            box-shadow: 0 0 0 3px rgba(107, 68, 35, 0.1);
+        }
+        
+        .order-summary {
+            background: linear-gradient(135deg, #6B4423 0%, #3E2723 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        
+        .summary-row.total {
+            font-size: 20px;
+            font-weight: 700;
+            padding-top: 15px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            margin-top: 15px;
+        }
+        
+        .summary-note {
+            font-size: 13px;
+            opacity: 0.8;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .order-modal-footer {
+            padding: 0 30px 30px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FCF8F4 100%);
+            border-radius: 0 0 25px 25px;
+        }
+        
+        .btn-submit-order {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit-order:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+        }
+        
+        .btn-submit-order:disabled {
+            background: #CCC;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .empty-order-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+        
+        .empty-order-message svg {
+            width: 80px;
+            height: 80px;
+            opacity: 0.3;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .order-modal {
+                margin: 10px;
+            }
+            
+            .order-modal-header {
+                padding: 20px;
+            }
+            
+            .order-modal-title {
+                font-size: 22px;
+            }
+            
+            .order-modal-body {
+                padding: 20px;
+            }
+            
+            .product-select-item {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -313,7 +630,7 @@
                         </div>
                         <div class="product-footer">
                             <span class="product-price">Rp 4.000</span>
-                            <a href="#cara-pesan" class="btn btn-order">Pesan</a>
+                            <button onclick="openOrderModal()" class="btn btn-order">Pesan</button>
                         </div>
                     </div>
                 </div>
@@ -337,7 +654,7 @@
                         </div>
                         <div class="product-footer">
                             <span class="product-price">Rp 3.500</span>
-                            <a href="#cara-pesan" class="btn btn-order">Pesan</a>
+                            <button onclick="openOrderModal()" class="btn btn-order">Pesan</button>
                         </div>
                     </div>
                 </div>
@@ -361,7 +678,7 @@
                         </div>
                         <div class="product-footer">
                             <span class="product-price">Rp 4.000</span>
-                            <a href="#cara-pesan" class="btn btn-order">Pesan</a>
+                            <button onclick="openOrderModal()" class="btn btn-order">Pesan</button>
                         </div>
                     </div>
                 </div>
@@ -521,14 +838,13 @@
             </div>
 
             <div class="order-cta">
-                <a href="https://wa.me/628993071991?text=Halo%20Pie%20Nana,%20saya%20ingin%20pesan%20pie%20brownies"
-                    class="btn btn-whatsapp" target="_blank">
+                <button onclick="openOrderModal()" class="btn btn-whatsapp">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                     </svg>
                     Pesan via WhatsApp
-                </a>
+                </button>
                 <p class="order-note">Atau hubungi: <strong>0899-3071-991</strong></p>
             </div>
 
@@ -622,8 +938,241 @@
         </svg>
     </a>
 
+    <!-- Custom Order Modal -->
+    <div class="order-modal-overlay" id="orderModal">
+        <div class="order-modal">
+            <div class="order-modal-header">
+                <button class="order-modal-close" onclick="closeOrderModal()">×</button>
+                <h2 class="order-modal-title">🛒 Buat Pesanan</h2>
+                <p class="order-modal-subtitle">Pilih produk dan tentukan jumlahnya</p>
+            </div>
+            
+            <div class="order-modal-body">
+                <!-- Product 1: Kacang -->
+                <div class="product-select-item" data-product="kacang">
+                    <div class="product-select-header">
+                        <input type="checkbox" class="product-checkbox" id="check-kacang" onchange="toggleProduct('kacang')">
+                        <div class="product-info">
+                            <div class="product-name">Pie Brownies Topping Kacang</div>
+                            <div class="product-price">Rp 4.000 / pcs</div>
+                        </div>
+                    </div>
+                    <div class="quantity-control">
+                        <span class="quantity-label">Jumlah:</span>
+                        <div class="quantity-input-group">
+                            <button class="quantity-btn minus" onclick="changeQty('kacang', -1)">−</button>
+                            <input type="number" class="quantity-input" id="qty-kacang" value="6" min="6" onchange="updateTotal()">
+                            <button class="quantity-btn plus" onclick="changeQty('kacang', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Choco Chips -->
+                <div class="product-select-item" data-product="choco">
+                    <div class="product-select-header">
+                        <input type="checkbox" class="product-checkbox" id="check-choco" onchange="toggleProduct('choco')">
+                        <div class="product-info">
+                            <div class="product-name">Pie Brownies Topping Choco Chips</div>
+                            <div class="product-price">Rp 3.500 / pcs</div>
+                        </div>
+                    </div>
+                    <div class="quantity-control">
+                        <span class="quantity-label">Jumlah:</span>
+                        <div class="quantity-input-group">
+                            <button class="quantity-btn minus" onclick="changeQty('choco', -1)">−</button>
+                            <input type="number" class="quantity-input" id="qty-choco" value="6" min="6" onchange="updateTotal()">
+                            <button class="quantity-btn plus" onclick="changeQty('choco', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Almond -->
+                <div class="product-select-item" data-product="almond">
+                    <div class="product-select-header">
+                        <input type="checkbox" class="product-checkbox" id="check-almond" onchange="toggleProduct('almond')">
+                        <div class="product-info">
+                            <div class="product-name">Pie Brownies Topping Kacang Almond</div>
+                            <div class="product-price">Rp 4.000 / pcs</div>
+                        </div>
+                    </div>
+                    <div class="quantity-control">
+                        <span class="quantity-label">Jumlah:</span>
+                        <div class="quantity-input-group">
+                            <button class="quantity-btn minus" onclick="changeQty('almond', -1)">−</button>
+                            <input type="number" class="quantity-input" id="qty-almond" value="6" min="6" onchange="updateTotal()">
+                            <button class="quantity-btn plus" onclick="changeQty('almond', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary" id="orderSummary" style="display: none;">
+                    <div id="summaryItems"></div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="totalPrice">Rp 0</span>
+                    </div>
+                    <div class="summary-note">*Belum termasuk ongkos kirim</div>
+                </div>
+
+                <div class="empty-order-message" id="emptyMessage">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <p>Pilih produk untuk mulai memesan</p>
+                </div>
+            </div>
+
+            <div class="order-modal-footer">
+                <button class="btn-submit-order" id="btnSubmit" onclick="submitOrder()" disabled>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                    Kirim Pesanan ke WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/script.js"></script>
+    
+    <!-- Order Modal Script -->
+    <script>
+        const WA_NUMBER = "628993071991";
+        
+        const products = {
+            'kacang': { name: 'Pie Brownies Topping Kacang', price: 4000 },
+            'choco': { name: 'Pie Brownies Topping Choco Chips', price: 3500 },
+            'almond': { name: 'Pie Brownies Topping Kacang Almond', price: 4000 }
+        };
+        
+        function openOrderModal() {
+            const modal = document.getElementById('orderModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeOrderModal() {
+            const modal = document.getElementById('orderModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function toggleProduct(productId) {
+            const checkbox = document.getElementById(`check-${productId}`);
+            const item = document.querySelector(`[data-product="${productId}"]`);
+            
+            if (checkbox.checked) {
+                item.classList.add('selected');
+            } else {
+                item.classList.remove('selected');
+            }
+            
+            updateTotal();
+        }
+        
+        function changeQty(productId, change) {
+            const input = document.getElementById(`qty-${productId}`);
+            let value = parseInt(input.value) || 6;
+            value += change;
+            
+            if (value < 6) value = 6;
+            
+            input.value = value;
+            updateTotal();
+        }
+        
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { 
+                style: 'currency', 
+                currency: 'IDR', 
+                minimumFractionDigits: 0 
+            }).format(number);
+        }
+        
+        function updateTotal() {
+            let total = 0;
+            let hasSelection = false;
+            let summaryHTML = '';
+            let itemCount = 0;
+            
+            Object.keys(products).forEach(productId => {
+                const checkbox = document.getElementById(`check-${productId}`);
+                if (checkbox.checked) {
+                    hasSelection = true;
+                    const qty = parseInt(document.getElementById(`qty-${productId}`).value) || 6;
+                    const price = products[productId].price;
+                    const subtotal = qty * price;
+                    total += subtotal;
+                    itemCount++;
+                    
+                    summaryHTML += `
+                        <div class="summary-row">
+                            <span>${itemCount}. ${products[productId].name} (${qty} pcs)</span>
+                            <span>${formatRupiah(subtotal)}</span>
+                        </div>
+                    `;
+                }
+            });
+            
+            const orderSummary = document.getElementById('orderSummary');
+            const emptyMessage = document.getElementById('emptyMessage');
+            const submitBtn = document.getElementById('btnSubmit');
+            
+            if (hasSelection) {
+                orderSummary.style.display = 'block';
+                emptyMessage.style.display = 'none';
+                submitBtn.disabled = false;
+                
+                document.getElementById('summaryItems').innerHTML = summaryHTML;
+                document.getElementById('totalPrice').textContent = formatRupiah(total);
+            } else {
+                orderSummary.style.display = 'none';
+                emptyMessage.style.display = 'block';
+                submitBtn.disabled = true;
+            }
+        }
+        
+        function submitOrder() {
+            let message = `*PESANAN BARU - PIE NANA*\n\nProduk:\n`;
+            let total = 0;
+            let itemCount = 0;
+            
+            Object.keys(products).forEach(productId => {
+                const checkbox = document.getElementById(`check-${productId}`);
+                if (checkbox.checked) {
+                    const qty = parseInt(document.getElementById(`qty-${productId}`).value) || 6;
+                    const price = products[productId].price;
+                    const subtotal = qty * price;
+                    total += subtotal;
+                    itemCount++;
+                    
+                    message += `${itemCount}. ${products[productId].name} - Jumlah: ${qty} pcs - Harga Satuan: ${formatRupiah(price)}\n`;
+                }
+            });
+            
+            message += `\nTotal: *${formatRupiah(total)}*\n`;
+            message += `*Belum termasuk ongkos kirim*\n\n`;
+            message += `Mohon konfirmasi ketersediaan dan detail pengiriman. Terima kasih!`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${WA_NUMBER}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Close modal after sending
+            setTimeout(() => {
+                closeOrderModal();
+            }, 500);
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('orderModal').addEventListener('click', function(e) {
+            if (e.target.id === 'orderModal') {
+                closeOrderModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
