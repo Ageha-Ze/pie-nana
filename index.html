@@ -411,9 +411,12 @@
             margin-bottom: 15px;
         }
         
+        /* Mobile Responsive Fixes */
         @media (max-width: 768px) {
             .order-modal {
-                margin: 10px;
+                margin: 15px;
+                max-height: 80vh;
+                width: 95vw;
             }
             
             .order-modal-header {
@@ -421,7 +424,11 @@
             }
             
             .order-modal-title {
-                font-size: 22px;
+                font-size: 20px;
+            }
+            
+            .order-modal-subtitle {
+                font-size: 13px;
             }
             
             .order-modal-body {
@@ -430,6 +437,102 @@
             
             .product-select-item {
                 padding: 15px;
+            }
+            
+            /* Fix checkbox alignment on mobile */
+            .product-select-header {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            /* Ensure modal scrolls properly on mobile */
+            .order-modal-overlay {
+                padding: 15px;
+            }
+            
+            /* Fix quantity controls on mobile */
+            .quantity-input-group {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .quantity-btn {
+                flex: 1;
+                min-width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            .quantity-input {
+                flex: 2;
+                min-width: 60px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            /* Fix order summary on mobile */
+            .order-summary {
+                padding: 15px;
+            }
+            
+            .summary-row {
+                font-size: 13px;
+            }
+            
+            .summary-row.total {
+                font-size: 16px;
+            }
+            
+            /* Fix empty message on mobile */
+            .empty-order-message {
+                padding: 30px 15px;
+            }
+            
+            .empty-order-message svg {
+                width: 60px;
+                height: 60px;
+            }
+            
+            /* Fix footer button on mobile */
+            .order-modal-footer {
+                padding: 0 20px 20px;
+            }
+            
+            .btn-submit-order {
+                padding: 15px;
+                font-size: 15px;
+            }
+        }
+        
+        /* Additional mobile fixes for overall layout */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-steps {
+                grid-template-columns: 1fr;
             }
         }
     </style>

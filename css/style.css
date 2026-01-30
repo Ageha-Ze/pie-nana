@@ -1588,6 +1588,7 @@ p {
 }
 
 @media (max-width: 768px) {
+    /* Navigation Mobile */
     .nav-menu {
         position: fixed;
         top: 90px;
@@ -1599,6 +1600,7 @@ p {
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         transition: left 0.3s ease;
         gap: 20px;
+        z-index: 999;
     }
     
     .nav-menu.active {
@@ -1609,34 +1611,66 @@ p {
         display: flex;
     }
     
+    /* Hero Section Mobile */
+    .hero {
+        min-height: 80vh;
+        margin-top: 90px;
+        padding: 60px 0;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
+        line-height: 1.2;
+        letter-spacing: 1px;
     }
     
     .hero-title .highlight {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        margin-top: 10px;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 30px;
     }
     
     .hero-buttons {
         flex-direction: column;
+        gap: 15px;
     }
     
-    .features-grid {
+    /* Content Layout Mobile */
+    .content-layout {
         grid-template-columns: 1fr;
+        gap: 30px;
+        min-height: auto;
     }
     
+    .content-text {
+        padding: 0;
+    }
+    
+    .content-image {
+        min-height: 300px;
+    }
+    
+    /* Grid Layouts Mobile */
+    .features-grid,
     .products-grid,
     .ingredients-grid,
     .order-steps,
     .order-info {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
     
+    /* Footer Mobile */
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
     }
     
+    /* Floating Buttons Mobile */
     .cart-float-btn,
     .whatsapp-float {
         width: 55px;
@@ -1645,57 +1679,154 @@ p {
         right: 20px;
     }
     
+    /* Cart Section Mobile */
     .cart-checkout-section {
-        padding: 25px;
-        border-radius: 20px;
+        padding: 20px;
+        border-radius: 15px;
+        margin: 40px 0;
     }
     
+    /* Section Titles Mobile */
     .section-title {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
         font-size: 2rem;
     }
     
-    h2 {
-        font-size: 1.8rem;
+    /* Modal Mobile */
+    .modal-content {
+        padding: 20px;
+        max-width: 95vw;
+        margin: 20px;
     }
     
-    .hero-title {
-        font-size: 2rem;
+    .quantity-input-group {
+        gap: 15px;
+        padding: 15px;
     }
     
-    .hero-title .highlight {
-        font-size: 2.5rem;
+    .quantity-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
     }
     
-    .btn {
-        padding: 14px 30px;
-        font-size: 14px;
+    .quantity-display {
+        font-size: 24px;
     }
     
+    /* Product Cards Mobile */
     .product-card {
         border-radius: 15px;
+        margin-bottom: 20px;
     }
     
     .product-content {
         padding: 20px;
     }
     
+    .product-title {
+        font-size: 1.3rem;
+    }
+    
+    .product-price {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Typography Mobile */
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        letter-spacing: 0;
+    }
+    
+    .hero-title .highlight {
+        font-size: 2.2rem;
+    }
+    
+    /* Buttons Mobile */
+    .btn {
+        padding: 12px 25px;
+        font-size: 13px;
+    }
+    
+    .btn-whatsapp {
+        padding: 15px 35px;
+        font-size: 14px;
+    }
+    
+    /* Modal Mobile */
     .modal-content {
-        padding: 25px;
+        padding: 15px;
+        max-width: 98vw;
+        margin: 10px;
     }
     
     .quantity-input-group {
-        gap: 15px;
-        padding: 20px;
+        gap: 10px;
+        padding: 12px;
     }
     
     .quantity-btn {
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .quantity-display {
+        font-size: 20px;
+    }
+    
+    /* Product Cards Mobile */
+    .product-card {
+        border-radius: 12px;
+    }
+    
+    .product-content {
+        padding: 15px;
+    }
+    
+    .product-title {
+        font-size: 1.2rem;
+    }
+    
+    .product-description {
+        font-size: 0.9rem;
+    }
+    
+    .product-price {
+        font-size: 1.2rem;
+    }
+    
+    /* Cart Items Mobile */
+    .cart-item {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .cart-total {
+        font-size: 22px;
+        padding: 15px;
+    }
+    
+    /* Checkout Form Mobile */
+    .form-group input,
+    .form-group textarea {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    .btn-checkout {
+        padding: 15px;
+        font-size: 15px;
     }
 }
