@@ -52,7 +52,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Scroll Reveal Animation
-const revealElements = document.querySelectorAll('.scroll-reveal');
+const revealElements = document.querySelectorAll('.scroll-reveal, .content-image, .content-text, .icon-feature-item, .section-title');
 
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
