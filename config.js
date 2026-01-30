@@ -5,7 +5,7 @@
 const CONFIG = {
     whatsappNumber: '628993071991', // Format: 62 + nomor tanpa 0
     displayPhone: '0899-3071-991', // Format display
-    email: 'info@pienana.com',
+    email: 'aghasekar@gmail.com',
 
     // Informasi Bisnis
     businessName: 'Pie Nana',

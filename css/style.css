@@ -112,7 +112,7 @@ img {
 @keyframes slideInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-80px);
     }
     to {
         opacity: 1;
@@ -123,7 +123,7 @@ img {
 @keyframes slideInRight {
     from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(80px);
     }
     to {
         opacity: 1;
@@ -414,16 +414,6 @@ p {
     margin-top: 15px;
 }
 
-.hero-subtitle {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease 0.35s both;
-}
-
 .hero-description {
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.2rem;
@@ -589,6 +579,8 @@ p {
     margin-bottom: 15px;
     font-weight: 400;
     letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
 .section-subtitle {
@@ -603,7 +595,8 @@ p {
    ============================================ */
 
 .dark-chocolate-section,
-.about-process-section {
+.about-process-section,
+.why-company-section {
     padding: 120px 0;
     background: var(--white);
 }
@@ -626,10 +619,13 @@ p {
 
 .content-text {
     padding: 60px 80px 60px 0;
+    opacity: 0;
+    animation: slideInRight 1s ease-out 0.5s forwards;
 }
 
 .content-layout.reverse .content-text {
     padding: 60px 0 60px 80px;
+    animation: slideInLeft 1s ease-out 0.5s forwards;
 }
 
 .content-header {
@@ -653,6 +649,21 @@ p {
     display: flex;
     gap: 20px;
     align-items: flex-start;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Stagger animation untuk setiap item */
+.icon-feature-item:nth-child(1) {
+    animation-delay: 0.8s;
+}
+
+.icon-feature-item:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.icon-feature-item:nth-child(3) {
+    animation-delay: 1.2s;
 }
 
 .feature-icon-outline {
@@ -693,6 +704,8 @@ p {
     height: 100%;
     min-height: 650px;
     overflow: hidden;
+    opacity: 0;
+    animation: slideInLeft 1s ease-out 0.3s forwards;
 }
 
 .content-image img {
@@ -700,6 +713,11 @@ p {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.95) contrast(1.05);
+    transition: transform 0.6s ease;
+}
+
+.content-image:hover img {
+    transform: scale(1.05);
 }
 
 /* ============================================
@@ -1198,8 +1216,8 @@ p {
 
 .ingredients-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
     margin-bottom: 60px;
 }
 
@@ -1599,21 +1617,9 @@ p {
 
 @media (max-width: 768px) {
     /* Navigation Mobile */
-    .navbar {
-        padding: 12px 0;
-    }
-    
-    .logo img {
-        height: 50px;
-    }
-    
-    .navbar.scrolled .logo img {
-        height: 45px;
-    }
-    
     .nav-menu {
         position: fixed;
-        top: 75px;
+        top: 90px;
         left: -100%;
         flex-direction: column;
         background: var(--white);
@@ -1635,50 +1641,30 @@ p {
     
     /* Hero Section Mobile */
     .hero {
-        min-height: auto;
-        height: auto;
-        margin-top: 60px;
-        padding: 40px 0;
-        background-attachment: scroll;
-    }
-    
-    .hero-content {
-        padding: 20px;
+        min-height: 80vh;
+        margin-top: 90px;
+        padding: 60px 0;
     }
     
     .hero-title {
-        font-size: 2rem;
-        line-height: 1.3;
-        letter-spacing: 0.5px;
-        margin-bottom: 15px;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        letter-spacing: 1px;
     }
     
     .hero-title .highlight {
-        font-size: 2.2rem;
-        margin-top: 5px;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-        line-height: 1.4;
+        font-size: 3rem;
+        margin-top: 10px;
     }
     
     .hero-description {
-        font-size: 0.95rem;
-        margin-bottom: 25px;
-        line-height: 1.6;
+        font-size: 1rem;
+        margin-bottom: 30px;
     }
     
     .hero-buttons {
         flex-direction: column;
-        gap: 12px;
-    }
-    
-    .hero-buttons .btn {
-        width: 100%;
-        padding: 14px 30px;
-        font-size: 14px;
+        gap: 15px;
     }
     
     /* Content Layout Mobile */
@@ -1704,6 +1690,35 @@ p {
     .order-info {
         grid-template-columns: 1fr;
         gap: 25px;
+    }
+    
+    /* Features Section Mobile */
+    .features-section .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-item {
+        text-align: center;
+        padding: 35px 20px;
+    }
+    
+    .feature-icon-large {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        display: block;
+    }
+    
+    .feature-item h3 {
+        font-size: 1.3rem;
+        color: var(--text-dark);
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+    
+    .feature-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        margin-bottom: 0;
     }
     
     /* Footer Mobile */
@@ -1785,27 +1800,12 @@ p {
     }
     
     .hero-title {
-        font-size: 1.75rem;
+        font-size: 2rem;
         letter-spacing: 0;
-        margin-bottom: 12px;
     }
     
     .hero-title .highlight {
-        font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 12px;
-    }
-    
-    .hero {
-        padding: 30px 0;
-    }
-    
-    .hero-description {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
+        font-size: 2.2rem;
     }
     
     /* Buttons Mobile */
@@ -1885,5 +1885,142 @@ p {
     .btn-checkout {
         padding: 15px;
         font-size: 15px;
+    }
+}
+
+/* ============================================
+   PREMIUM CHOCOLATE BANNER SECTION
+   ============================================ */
+
+.premium-chocolate-banner {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    overflow: hidden;
+    margin: 0;
+    padding: 100px 0;
+}
+
+/* Dark Overlay untuk membuat text lebih jelas */
+.premium-chocolate-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(62, 39, 35, 0.75) 0%, rgba(107, 68, 35, 0.75) 100%);
+    z-index: 1;
+}
+
+/* Noise texture overlay untuk aesthetic touch */
+.premium-chocolate-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    opacity: 0.03;
+    z-index: 1;
+}
+
+.premium-chocolate-banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+.premium-chocolate-banner .banner-title {
+    color: var(--white);
+    font-size: 4.5rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    text-shadow: 2px 2px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease;
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+/* Decorative lines around title */
+.premium-chocolate-banner .banner-title::before,
+.premium-chocolate-banner .banner-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 25px auto;
+    animation: expandWidth 1s ease;
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 80px;
+        opacity: 1;
+    }
+}
+
+/* Responsive untuk Premium Chocolate Banner */
+@media (max-width: 1024px) {
+    .premium-chocolate-banner {
+        min-height: 350px;
+        padding: 80px 0;
+    }
+    
+    .premium-chocolate-banner .banner-title {
+        font-size: 3.5rem;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 768px) {
+    .premium-chocolate-banner {
+        min-height: 300px;
+        padding: 60px 0;
+        background-attachment: scroll; /* Disable parallax on mobile for performance */
+    }
+    
+    .premium-chocolate-banner .banner-title {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        padding: 0 20px;
+    }
+    
+    .premium-chocolate-banner .banner-title::before,
+    .premium-chocolate-banner .banner-title::after {
+        width: 60px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .premium-chocolate-banner {
+        min-height: 250px;
+        padding: 50px 0;
+    }
+    
+    .premium-chocolate-banner .banner-title {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+    
+    .premium-chocolate-banner .banner-title::before,
+    .premium-chocolate-banner .banner-title::after {
+        width: 40px;
+        margin: 15px auto;
     }
 }

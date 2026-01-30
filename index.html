@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Primary Meta Tags -->
     <title>Pie Nana - Pie Brownies Dark Chocolate Premium | Homemade Fresh</title>
@@ -504,6 +504,111 @@
             }
         }
         
+        /* Icon Feature List Styles */
+        .icon-feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .icon-feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FCF8F4 100%);
+            border-radius: 15px;
+            border: 2px solid #F4E4C1;
+            transition: all 0.3s ease;
+        }
+        
+        .icon-feature-item:hover {
+            border-color: #D4A574;
+            box-shadow: 0 8px 25px rgba(107, 68, 35, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .feature-icon-outline {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6B4423 0%, #3E2723 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(107, 68, 35, 0.3);
+        }
+        
+        .icon-feature-content {
+            flex: 1;
+        }
+        
+        .icon-feature-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #3E2723;
+            margin-bottom: 8px;
+        }
+        
+        .icon-feature-content p {
+            font-size: 15px;
+            color: #6B4423;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Mobile Responsive for Icon Feature List */
+        @media (max-width: 768px) {
+            .icon-feature-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .feature-icon-outline {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .icon-feature-content h4 {
+                font-size: 16px;
+            }
+            
+            .icon-feature-content p {
+                font-size: 14px;
+            }
+        }
+        
+        /* Content Grid Layout for Dark Chocolate Section */
+        .dark-chocolate-section .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        /* Content Grid Layout for Why Company Section */
+        .why-company-section .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        /* Mobile Responsive for Content Grid */
+        @media (max-width: 768px) {
+            .dark-chocolate-section .content-grid,
+            .why-company-section .content-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
         /* Additional mobile fixes for overall layout */
         @media (max-width: 480px) {
             .hero-title {
@@ -556,15 +661,15 @@
                 <div class="logo">
                     <img src="images/logo.png" alt="Pie Nana Logo">
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#dark-chocolate">Dark Chocolate</a></li>
-                    <li><a href="#produk">Produk</a></li>
-                    <li><a href="#bahan">Bahan Premium</a></li>
-                    <li><a href="#cara-pesan">Cara Pesan</a></li>
-                    <li><a href="#kontak">Kontak</a></li>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#dark-chocolate" class="nav-link">Dark Chocolate</a></li>
+                    <li><a href="#produk" class="nav-link">Produk</a></li>
+                    <li><a href="#bahan" class="nav-link">Bahan Premium</a></li>
+                    <li><a href="#cara-pesan" class="nav-link">Cara Pesan</a></li>
+                    <li><a href="#kontak" class="nav-link">Kontak</a></li>
                 </ul>
-                <div class="nav-toggle">
+                <div class="nav-toggle" id="navToggle">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -599,47 +704,51 @@
             </div>
 
             <div class="content-grid">
-                <!-- Text Content -->
-                <div class="content-text">
-                    <h3>Kenapa Pilih Dark Chocolate Berkualitas?</h3>
-                    <p>
-                        Nikmati kelezatan pie brownies dengan dark chocolate premium, dibuat dengan
-                        bahan pilihan untuk pengalaman rasa yang tak terlupakan. Dark chocolate
-                        kami memiliki karakteristik rasa pahit dan manis yang sempurna.
-                    </p>
-
-                    <!-- Feature Boxes -->
-                    <div class="feature-box">
-                        <div class="feature-icon">🍫</div>
-                        <div class="feature-text">
-                            <h4>Rasa yang Berbeda</h4>
-                            <p>Bukan sekadar coklat biasa. Dark chocolate yang kami gunakan memiliki
-                                karakteristik rasa pahit dan manis yang seimbang sempurna.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-box">
-                        <div class="feature-icon">💯</div>
-                        <div class="feature-text">
-                            <h4>Rasa yang Seimbang</h4>
-                            <p>Karakter coklat yang well-rounded dengan intensitas rasa kakao yang kaya
-                                dan tahan lama, tanpa rasa pahit yang berlebihan.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-box">
-                        <div class="feature-icon">✨</div>
-                        <div class="feature-text">
-                            <h4>Profil Rasa Kompleks</h4>
-                            <p>Keseimbangan sempurna antara rasa pahit dan manis, dark chocolate
-                                menciptakan profil rasa yang kompleks dan aftertaste yang panjang.</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Image Content -->
                 <div class="content-image">
                     <img src="images/darkchoco.png" alt="Dark Chocolate Premium">
+                </div>
+
+                <!-- Text Content with Icon List -->
+                <div class="content-text">
+                    <div class="section-header">
+                        <h3>Kenapa Pilih Dark Chocolate Berkualitas?</h3>
+                    </div>
+
+                    <div class="icon-feature-list">
+                        <div class="icon-feature-item">
+                            <div class="feature-icon-outline">
+                                🍫
+                            </div>
+                            <div class="icon-feature-content">
+                                <h4>Rasa yang Berbeda</h4>
+                                <p>Bukan sekadar coklat biasa. Dark chocolate yang kami gunakan memiliki
+                                    karakteristik rasa pahit dan manis yang seimbang sempurna.</p>
+                            </div>
+                        </div>
+
+                        <div class="icon-feature-item">
+                            <div class="feature-icon-outline">
+                                💯
+                            </div>
+                            <div class="icon-feature-content">
+                                <h4>Rasa yang Seimbang</h4>
+                                <p>Karakter coklat yang well-rounded dengan intensitas rasa kakao yang kaya
+                                    dan tahan lama, tanpa rasa pahit yang berlebihan.</p>
+                            </div>
+                        </div>
+
+                        <div class="icon-feature-item">
+                            <div class="feature-icon-outline">
+                                ✨
+                            </div>
+                            <div class="icon-feature-content">
+                                <h4>Profil Rasa Kompleks</h4>
+                                <p>Keseimbangan sempurna antara rasa pahit dan manis, dark chocolate
+                                    menciptakan profil rasa yang kompleks dan aftertaste yang panjang.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -647,7 +756,9 @@
 
     <!-- Premium Chocolate Banner -->
     <section class="premium-chocolate-banner" style="background-image: url('images/choco-banner.jpg');">
-        <h2>Pie Brownies Coklat Premium</h2>
+        <div class="container">
+            <h2 class="banner-title">Pie Brownies Coklat Premium</h2>
+        </div>
     </section>
 
     <!-- Why Our Company Section -->
@@ -714,7 +825,7 @@
 
             <div class="products-grid">
                 <!-- Product 1 -->
-                <div class="product-card">
+                <div class="product-card scroll-reveal">
                     <div class="product-image">
                         <img src="images/pie-kacang-tanah.png" alt="Pie Brownies Topping Kacang">
                         <div class="product-badge">Best Seller</div>
@@ -739,7 +850,7 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="product-card">
+                <div class="product-card scroll-reveal">
                     <div class="product-image">
                         <img src="images/pie-choco-marble.png" alt="Pie Brownies Topping Choco Chips">
                         <div class="product-badge">Premium</div>
@@ -763,7 +874,7 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="product-card">
+                <div class="product-card scroll-reveal">
                     <div class="product-image">
                         <img src="images/pie-almond.png" alt="Pie Brownies Topping Kacang Almond">
                         <div class="product-badge">Signature</div>
@@ -799,94 +910,85 @@
 
             <div class="ingredients-grid">
                 <!-- Ingredient 1: Dark Chocolate -->
-                <div class="ingredient-card">
-                    <div class="ingredient-image">
+                <div class="product-card scroll-reveal">
+                    <div class="product-image">
                         <img src="images/darkchoco2.png" alt="Dark Chocolate Premium">
-                        <div class="ingredient-badge">Base Utama</div>
+                        <div class="product-badge">Base Utama</div>
                     </div>
-                    <div class="ingredient-content">
-                        <h3>Dark Chocolate Premium</h3>
-                        <div class="ingredient-quality">
-                            <h4>Karakteristik Rasa:</h4>
-                            <ul>
-                                <li><strong>Keseimbangan Sempurna:</strong> Kombinasi ideal antara rasa pahit dan manis
-                                    dengan profil rasa yang kompleks</li>
-                                <li><strong>Aftertaste Panjang:</strong> Rasa kakao yang tahan lama dan menyenangkan di
-                                    lidah</li>
-                                <li><strong>Tekstur Premium:</strong> Velvet smooth dengan sensasi melt-in-your-mouth
-                                </li>
-                                <li><strong>Profil Dalam:</strong> Intensitas gelap dengan sentuhan notes panggang yang
-                                    halus</li>
-                            </ul>
+                    <div class="product-content">
+                        <h3 class="product-title">Dark Chocolate Premium</h3>
+                        <p class="product-description">
+                            Kombinasi ideal antara rasa pahit dan manis dengan profil rasa yang kompleks. 
+                            Velvet smooth dengan sensasi melt-in-your-mouth dan aftertaste kakao yang tahan lama.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag">Keseimbangan Sempurna</span>
+                            <span class="feature-tag">Aftertaste Panjang</span>
+                            <span class="feature-tag">Velvet Texture</span>
+                            <span class="feature-tag">Profil Dalam</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Ingredient 2: Kacang Almond -->
-                <div class="ingredient-card">
-                    <div class="ingredient-image">
+                <div class="product-card scroll-reveal">
+                    <div class="product-image">
                         <img src="images/almond.png" alt="Kacang Almond Premium">
-                        <div class="ingredient-badge">Premium Topping</div>
+                        <div class="product-badge">Premium Topping</div>
                     </div>
-                    <div class="ingredient-content">
-                        <h3>Kacang Almond Roasted</h3>
-                        <div class="ingredient-quality">
-                            <h4>Karakteristik Rasa:</h4>
-                            <ul>
-                                <li><strong>Sophisticated Flavor:</strong> Rasa nutty yang refined dengan natural
-                                    sweetness</li>
-                                <li><strong>Tekstur Premium:</strong> Crunchy, keras, dan crispy sempurna setelah
-                                    dipanggang</li>
-                                <li><strong>Toasty Warmth:</strong> Hints vanilla dengan aroma karakteristik nutty dan
-                                    caramel</li>
-                                <li><strong>Earthy Finish:</strong> Aftertaste dengan depth of flavor yang elegant</li>
-                            </ul>
+                    <div class="product-content">
+                        <h3 class="product-title">Kacang Almond Roasted</h3>
+                        <p class="product-description">
+                            Rasa nutty yang refined dengan natural sweetness. Crunchy, keras, dan crispy sempurna setelah dipanggang.
+                            Hints vanilla dengan aroma karakteristik nutty dan caramel.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag">Sophisticated Flavor</span>
+                            <span class="feature-tag">Premium Almond</span>
+                            <span class="feature-tag">Toasty Warmth</span>
+                            <span class="feature-tag">Earthy Finish</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Ingredient 3: Kacang Tanah -->
-                <div class="ingredient-card">
-                    <div class="ingredient-image">
+                <div class="product-card scroll-reveal">
+                    <div class="product-image">
                         <img src="images/kacangtanah.png" alt="Kacang Tanah Premium">
-                        <div class="ingredient-badge">Classic Favorite</div>
+                        <div class="product-badge">Classic Favorite</div>
                     </div>
-                    <div class="ingredient-content">
-                        <h3>Kacang Tanah Pilihan</h3>
-                        <div class="ingredient-quality">
-                            <h4>Karakteristik Rasa:</h4>
-                            <ul>
-                                <li><strong>Sweet & Nutty:</strong> Keseimbangan menyenangkan antara rasa manis dan
-                                    nutty saat dipanggang</li>
-                                <li><strong>Roasted Aroma:</strong> Intensitas tinggi dari roasted peanutty flavor yang
-                                    authentic</li>
-                                <li><strong>Chocolate Undertone:</strong> Sentuhan coklat alami dengan undertone vegetal
-                                </li>
-                                <li><strong>Familiar Comfort:</strong> Rasa yang populer dengan karakter dark roasted
-                                    kuat</li>
-                            </ul>
+                    <div class="product-content">
+                        <h3 class="product-title">Kacang Tanah Pilihan</h3>
+                        <p class="product-description">
+                            Keseimbangan menyenangkan antara rasa manis dan nutty saat dipanggang.
+                            Intensitas tinggi dari roasted peanutty flavor yang authentic dengan sentuhan coklat alami.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag">Sweet & Nutty</span>
+                            <span class="feature-tag">Roasted Aroma</span>
+                            <span class="feature-tag">Chocolate Undertone</span>
+                            <span class="feature-tag">Familiar Comfort</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Ingredient 4: Choco Chips -->
-                <div class="ingredient-card">
-                    <div class="ingredient-image">
+                <div class="product-card scroll-reveal">
+                    <div class="product-image">
                         <img src="images/cchips.png" alt="Chocolate Chips">
-                        <div class="ingredient-badge">Visual & Taste</div>
+                        <div class="product-badge">Visual & Taste</div>
                     </div>
-                    <div class="ingredient-content">
-                        <h3>Choco Chips</h3>
-                        <div class="ingredient-quality">
-                            <h4>Karakteristik Rasa:</h4>
-                            <ul>
-                                <li><strong>Crunchy Delight:</strong> Tekstur renyah yang memecah kelembutan brownies
-                                </li>
-                                <li><strong>Rich Chocolate Burst:</strong> Ledakan rasa coklat kaya di setiap gigitan
-                                </li>
-                                <li><strong>Light & Airy:</strong> Tidak terlalu berat, memberikan sensasi ringan</li>
-                                <li><strong>Visual Sparkle:</strong> Kilauan cantik yang mempercantik tampilan pie</li>
-                            </ul>
+                    <div class="product-content">
+                        <h3 class="product-title">Choco Chips</h3>
+                        <p class="product-description">
+                            Tekstur renyah yang memecah kelembutan brownies. Ledakan rasa coklat kaya di setiap gigitan.
+                            Tidak terlalu berat, memberikan sensasi ringan dengan kilauan cantik.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag">Crunchy Delight</span>
+                            <span class="feature-tag">Rich Chocolate</span>
+                            <span class="feature-tag">Light & Airy</span>
+                            <span class="feature-tag">Visual Sparkle</span>
                         </div>
                     </div>
                 </div>
@@ -1016,10 +1118,10 @@
                 <div class="footer-menu">
                     <h4>Menu</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#dark-chocolate">Dark Chocolate</a></li>
-                        <li><a href="#produk">Produk</a></li>
-                        <li><a href="#cara-pesan">Cara Pesan</a></li>
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#dark-chocolate" class="nav-link">Dark Chocolate</a></li>
+                        <li><a href="#produk" class="nav-link">Produk</a></li>
+                        <li><a href="#cara-pesan" class="nav-link">Cara Pesan</a></li>
                     </ul>
                 </div>
             </div>
