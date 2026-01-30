@@ -7,22 +7,22 @@ let cart = [];
 let currentModalItemId = null;
 
 // Format Rupiah
-const formatRupiah = (number) => new Intl.NumberFormat('id-ID', { 
-    style: 'currency', 
-    currency: 'IDR', 
-    minimumFractionDigits: 0 
+const formatRupiah = (number) => new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0
 }).format(number);
 
 // Open Modal
 function openQuantityModal(itemId) {
     console.log('Modal opened for item:', itemId);
     currentModalItemId = itemId;
-    
+
     const modalQuantityInput = document.getElementById('modal-quantity');
     if (modalQuantityInput) {
         modalQuantityInput.value = 1;
     }
-    
+
     const quantityModal = document.getElementById('quantity-modal');
     if (quantityModal) {
         quantityModal.classList.add('flex');
@@ -44,7 +44,7 @@ function closeQuantityModal() {
 function confirmAddToCart() {
     const modalQuantityInput = document.getElementById('modal-quantity');
     const quantity = parseInt(modalQuantityInput.value, 10);
-    
+
     if (currentModalItemId !== null && quantity > 0) {
         addToCart(currentModalItemId, quantity);
     }
@@ -59,24 +59,24 @@ function addToCart(itemId, quantity) {
         2: { id: 2, name: 'Pie Brownies Topping Choco Chips', price: 3500 },
         3: { id: 3, name: 'Pie Brownies Topping Kacang Almond', price: 4000 }
     };
-    
+
     const item = products[itemId];
     if (!item) return;
-    
+
     const cartItem = cart.find(c => c.id === itemId);
     if (cartItem) {
         cartItem.quantity += quantity;
     } else {
-        cart.push({ 
-            id: item.id, 
-            name: item.name, 
-            price: item.price, 
-            quantity: quantity 
+        cart.push({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: quantity
         });
     }
-    
+
     updateCartDisplay();
-    
+
     // Scroll to cart
     setTimeout(() => {
         const cartSection = document.getElementById('cart-checkout-section');
@@ -105,22 +105,22 @@ function updateCartDisplay() {
     const cartTotalDisplay = document.getElementById('cart-total');
     const cartCountDisplay = document.getElementById('cart-count');
     const checkoutBtn = document.getElementById('checkout-btn');
-    
+
     cartItemsContainer.innerHTML = '';
     let total = 0;
     let totalItems = 0;
-    
+
     if (cart.length === 0) {
         if (emptyCartMessage) emptyCartMessage.style.display = 'block';
         if (checkoutBtn) checkoutBtn.disabled = true;
     } else {
         if (emptyCartMessage) emptyCartMessage.style.display = 'none';
         if (checkoutBtn) checkoutBtn.disabled = false;
-        
+
         cart.forEach(item => {
             total += item.price * item.quantity;
             totalItems += item.quantity;
-            
+
             const itemElement = document.createElement('div');
             itemElement.className = 'flex items-center justify-between border-b pb-2';
             itemElement.innerHTML = `
@@ -141,7 +141,7 @@ function updateCartDisplay() {
             cartItemsContainer.appendChild(itemElement);
         });
     }
-    
+
     if (cartTotalDisplay) cartTotalDisplay.textContent = formatRupiah(total);
     if (cartCountDisplay) cartCountDisplay.textContent = totalItems;
 }
@@ -152,22 +152,22 @@ function checkout() {
     const customerAddress = document.getElementById('cust-address').value;
     const customerNotes = document.getElementById('cust-notes').value;
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
+
     if (!customerName.trim() || !customerAddress.trim()) {
         alert("Mohon lengkapi Nama dan Alamat sebelum memesan.");
         return;
     }
-    
+
     let message = `*PESANAN BARU - PIE NANA*\nby nusabit.com\n=========================\n*Detail Pemesan:*\nNama: *${customerName}*\nAlamat/Keterangan: *${customerAddress}*`;
-    if (customerNotes.trim()) { 
-        message += `\nCatatan: *${customerNotes}*`; 
+    if (customerNotes.trim()) {
+        message += `\nCatatan: *${customerNotes}*`;
     }
     message += `\n=========================\n\n*Rincian Pesanan:*\n`;
-    
+
     cart.forEach(item => {
         message += `*- ${item.name}*\n  (${item.quantity} x ${formatRupiah(item.price)}) = *${formatRupiah(item.price * item.quantity)}*\n`;
     });
-    
+
     message += `\n*TOTAL PESANAN: ${formatRupiah(total)}*\n\n_Mohon ditunggu konfirmasinya. Terima kasih!_\n`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WA_NUMBER}?text=${encodedMessage}`;
@@ -183,21 +183,21 @@ function scrollToCart() {
 }
 
 // Initialize
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateCartDisplay();
-    
+
     // Modal cancel button
     const modalCancelBtn = document.getElementById('modal-cancel');
     if (modalCancelBtn) {
         modalCancelBtn.addEventListener('click', closeQuantityModal);
     }
-    
+
     // Modal confirm button
     const modalConfirmBtn = document.getElementById('modal-confirm');
     if (modalConfirmBtn) {
         modalConfirmBtn.addEventListener('click', confirmAddToCart);
     }
-    
+
     // Modal click outside
     const quantityModal = document.getElementById('quantity-modal');
     if (quantityModal) {
@@ -207,13 +207,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Toggle cart button
     const toggleCartBtn = document.getElementById('toggle-cart-btn');
     if (toggleCartBtn) {
         toggleCartBtn.addEventListener('click', scrollToCart);
     }
-    
+
     // Checkout button
     const checkoutBtn = document.getElementById('checkout-btn');
     if (checkoutBtn) {

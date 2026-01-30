@@ -67,9 +67,10 @@ revealElements.forEach(el => {
 // ============================================
 
 // Parallax effect - hanya pada background, bukan pada seluruh hero element
+// Disable pada mobile untuk performa lebih baik
 window.addEventListener('scroll', () => {
     const hero = document.querySelector('.hero');
-    if (hero) {
+    if (hero && window.innerWidth > 768) {
         const scrolled = window.pageYOffset;
         // Gunakan background-position untuk parallax, bukan transform pada element
         const yPos = -(scrolled * 0.5);
