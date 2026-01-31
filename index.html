@@ -118,527 +118,228 @@
         rel="stylesheet">
 
     <style>
-        /* Custom Order Modal Styles */
-        .order-modal-overlay {
-            display: none;
-            position: fixed;
+        /* Premium Chocolate Banner Styles */
+        .premium-chocolate-banner {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+            margin: 0;
+            padding: 100px 0;
+        }
+
+        .premium-chocolate-banner::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: linear-gradient(135deg, rgba(62, 39, 35, 0.50) 0%, rgba(107, 68, 35, 0.50) 100%);
+            z-index: 1;
         }
 
-        .order-modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .order-modal {
-            background: transparent;
-            border-radius: 25px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 70px rgba(107, 68, 35, 0.4);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .order-modal-overlay.active .order-modal {
-            transform: scale(1);
-        }
-
-        .order-modal-header {
-            background: linear-gradient(135deg, #6B4423 0%, #3E2723 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 25px 25px 0 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .order-modal-close {
+        .premium-chocolate-banner::after {
+            content: '';
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.03;
+            z-index: 1;
         }
 
-        .order-modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg);
+        .premium-chocolate-banner .container {
+            position: relative;
+            z-index: 2;
         }
 
-        .order-modal-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .order-modal-subtitle {
-            font-size: 15px;
-            opacity: 0.9;
-        }
-
-        .order-modal-body {
-            padding: 30px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FCF8F4 100%);
-        }
-
-        .product-select-item {
-            background: white;
-            border: 2px solid #F4E4C1;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .product-select-item:hover {
-            border-color: #D4A574;
-            box-shadow: 0 8px 25px rgba(107, 68, 35, 0.15);
-        }
-
-        .product-select-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .product-checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #D4A574;
-            border-radius: 6px;
-            cursor: pointer;
-            flex-shrink: 0;
-            accent-color: #6B4423;
-        }
-
-        .product-info {
-            flex: 1;
-        }
-
-        .product-name {
-            font-weight: 600;
-            color: #3E2723;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .product-price {
-            color: #6B4423;
-            font-weight: 600;
-            font-size: 15px;
-        }
-
-        .quantity-control {
-            display: none;
-            align-items: center;
-            gap: 15px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #F4E4C1;
-        }
-
-        .product-select-item.selected .quantity-control {
-            display: flex;
-        }
-
-        .quantity-label {
-            font-weight: 600;
-            color: #3E2723;
-            font-size: 14px;
-        }
-
-        .quantity-input-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-        }
-
-        .quantity-btn {
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 10px;
-            font-size: 20px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .quantity-btn.minus {
-            background: #FEE2E2;
-            color: #DC2626;
-        }
-
-        .quantity-btn.minus:hover {
-            background: #DC2626;
-            color: white;
-        }
-
-        .quantity-btn.plus {
-            background: #DCFCE7;
-            color: #16A34A;
-        }
-
-        .quantity-btn.plus:hover {
-            background: #16A34A;
-            color: white;
-        }
-
-        .quantity-input {
-            width: 70px;
-            height: 40px;
+        .premium-chocolate-banner .banner-title {
+            color: var(--white);
+            font-size: 4.5rem;
+            font-weight: 300;
             text-align: center;
-            border: 2px solid #D4A574;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            color: #3E2723;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+            text-shadow: 2px 2px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
         }
 
-        .quantity-input:focus {
-            outline: none;
-            border-color: #6B4423;
-            box-shadow: 0 0 0 3px rgba(107, 68, 35, 0.1);
+        .premium-chocolate-banner .banner-title::before,
+        .premium-chocolate-banner .banner-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+            margin: 25px auto;
+            animation: expandWidth 1s ease;
         }
 
-        .order-summary {
-            background: linear-gradient(135deg, #6B4423 0%, #3E2723 100%);
-            color: white;
+        @keyframes expandWidth {
+            from {
+                width: 0;
+                opacity: 0;
+            }
+
+            to {
+                width: 80px;
+                opacity: 1;
+            }
+        }
+
+        /* Responsive untuk Premium Chocolate Banner */
+        @media (max-width: 1024px) {
+            .premium-chocolate-banner {
+                min-height: 350px;
+                padding: 80px 0;
+            }
+
+            .premium-chocolate-banner .banner-title {
+                font-size: 3.5rem;
+                letter-spacing: 3px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .premium-chocolate-banner {
+                min-height: 300px;
+                padding: 60px 0;
+                background-attachment: scroll;
+            }
+
+            .premium-chocolate-banner .banner-title {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+                padding: 0 20px;
+            }
+
+            .premium-chocolate-banner .banner-title::before,
+            .premium-chocolate-banner .banner-title::after {
+                width: 60px;
+                margin: 20px auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .premium-chocolate-banner {
+                min-height: 250px;
+                padding: 50px 0;
+            }
+
+            .premium-chocolate-banner .banner-title {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+
+            .premium-chocolate-banner .banner-title::before,
+            .premium-chocolate-banner .banner-title::after {
+                width: 40px;
+                margin: 15px auto;
+            }
+        }
+
+        /* Customer Information Form Styles */
+        .customer-info-section {
+            margin-bottom: 30px;
             padding: 20px;
-            border-radius: 15px;
-            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 15px;
+        .form-group {
+            margin-bottom: 20px;
         }
 
-        .summary-row.total {
-            font-size: 20px;
-            font-weight: 700;
-            padding-top: 15px;
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
-            margin-top: 15px;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .summary-note {
-            font-size: 13px;
-            opacity: 0.8;
-            margin-top: 10px;
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #fff;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #C9A961;
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-group input[type="text"]::placeholder,
+        .form-group textarea::placeholder {
+            color: #9aa0a6;
             font-style: italic;
         }
 
-        .order-modal-footer {
-            padding: 0 30px 30px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FCF8F4 100%);
-            border-radius: 0 0 25px 25px;
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
-        .btn-submit-order {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-submit-order:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
-        }
-
-        .btn-submit-order:disabled {
-            background: #CCC;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .empty-order-message {
-            text-align: center;
-            padding: 40px 20px;
-            color: #666;
-        }
-
-        .empty-order-message svg {
-            width: 80px;
-            height: 80px;
-            opacity: 0.3;
-            margin-bottom: 15px;
-        }
-
-        /* Mobile Responsive Fixes */
+        /* Responsive for Customer Info Form */
         @media (max-width: 768px) {
-            .order-modal {
-                margin: 15px;
-                max-height: 80vh;
-                width: 95vw;
+            .customer-info-section {
+                padding: 15px;
+                margin-bottom: 25px;
             }
 
-            .order-modal-header {
-                padding: 20px;
-            }
-
-            .order-modal-title {
-                font-size: 20px;
-            }
-
-            .order-modal-subtitle {
+            .form-group label {
                 font-size: 13px;
             }
 
-            .order-modal-body {
-                padding: 20px;
-            }
-
-            .product-select-item {
-                padding: 15px;
-            }
-
-            /* Fix checkbox alignment on mobile */
-            .product-select-header {
-                flex-direction: row;
-                align-items: center;
-            }
-
-            /* Ensure modal scrolls properly on mobile */
-            .order-modal-overlay {
-                padding: 15px;
-            }
-
-            /* Fix quantity controls on mobile */
-            .quantity-input-group {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .quantity-btn {
-                flex: 1;
-                min-width: 35px;
-                height: 35px;
-                font-size: 16px;
-            }
-
-            .quantity-input {
-                flex: 2;
-                min-width: 60px;
-                height: 35px;
-                font-size: 16px;
-            }
-
-            /* Fix order summary on mobile */
-            .order-summary {
-                padding: 15px;
-            }
-
-            .summary-row {
-                font-size: 13px;
-            }
-
-            .summary-row.total {
-                font-size: 16px;
-            }
-
-            /* Fix empty message on mobile */
-            .empty-order-message {
-                padding: 30px 15px;
-            }
-
-            .empty-order-message svg {
-                width: 60px;
-                height: 60px;
-            }
-
-            /* Fix footer button on mobile */
-            .order-modal-footer {
-                padding: 0 20px 20px;
-            }
-
-            .btn-submit-order {
-                padding: 15px;
+            .form-group input[type="text"],
+            .form-group textarea {
                 font-size: 15px;
+                padding: 10px 14px;
             }
         }
 
-        /* Icon Feature List Styles */
-        .icon-feature-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .icon-feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FCF8F4 100%);
-            border-radius: 15px;
-            border: 2px solid #F4E4C1;
-            transition: all 0.3s ease;
-        }
-
-        .icon-feature-item:hover {
-            border-color: #D4A574;
-            box-shadow: 0 8px 25px rgba(107, 68, 35, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .feature-icon-outline {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #6B4423 0%, #3E2723 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(107, 68, 35, 0.3);
-        }
-
-        .icon-feature-content {
-            flex: 1;
-        }
-
-        .icon-feature-content h4 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #3E2723;
-            margin-bottom: 8px;
-        }
-
-        .icon-feature-content p {
-            font-size: 15px;
-            color: #6B4423;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* Mobile Responsive for Icon Feature List */
-        @media (max-width: 768px) {
-            .icon-feature-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-                padding: 15px;
-            }
-
-            .feature-icon-outline {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-
-            .icon-feature-content h4 {
-                font-size: 16px;
-            }
-
-            .icon-feature-content p {
-                font-size: 14px;
-            }
-        }
-
-        /* Content Grid Layout for Dark Chocolate Section */
-        .dark-chocolate-section .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        /* Content Grid Layout for Why Company Section */
-        .why-company-section .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        /* Mobile Responsive for Content Grid */
-        @media (max-width: 768px) {
-
-            .dark-chocolate-section .content-grid,
-            .why-company-section .content-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-
-        /* Additional mobile fixes for overall layout */
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.5rem;
-                line-height: 1.2;
+            .customer-info-section {
+                padding: 12px;
+                margin-bottom: 20px;
             }
 
-            .hero-subtitle {
-                font-size: 1.25rem;
+            .form-group label {
+                font-size: 12px;
             }
 
-            .section-title {
-                font-size: 1.75rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .order-steps {
-                grid-template-columns: 1fr;
+            .form-group input[type="text"],
+            .form-group textarea {
+                font-size: 14px;
+                padding: 8px 12px;
             }
         }
     </style>
@@ -830,7 +531,8 @@
                 <div class="product-card scroll-reveal">
                     <div class="product-image">
                         <img src="images/pie-kacang-tanah.png" alt="Pie Brownies Topping Kacang">
-                        <div class="product-badge">Best Seller</div>
+                        <div class="product-badge">Newcomer</div>
+                        <div class="product-badge-left">🔥TERJUAL 100+</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Pie Brownies Topping Kacang</h3>
@@ -856,6 +558,7 @@
                     <div class="product-image">
                         <img src="images/pie-choco-marble.png" alt="Pie Brownies Topping Choco Chips">
                         <div class="product-badge">Premium</div>
+                        <div class="product-badge-left">🔥TERJUAL 140+</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Pie Brownies Topping Choco Chips</h3>
@@ -880,6 +583,7 @@
                     <div class="product-image">
                         <img src="images/pie-almond.png" alt="Pie Brownies Topping Kacang Almond">
                         <div class="product-badge">Signature</div>
+                        <div class="product-badge-left">🔥TERJUAL 150+</div>
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">Pie Brownies Topping Kacang Almond</h3>
@@ -1205,30 +909,172 @@
     <!-- Keunggulan Section -->
     <section class="features-section">
         <div class="container">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon-large">🏆</div>
-                    <h3>Bahan Premium</h3>
-                    <p>Menggunakan dark chocolate dan topping berkualitas tinggi</p>
+            <div class="section-header">
+                <h2 class="section-title">Komitmen kami</h2>
+                <p class="section-subtitle">Kami berusaha untuk selalu mempertahankan kualitas</p>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon-large">🏆</div>
+                        <h3>Bahan Premium</h3>
+                        <p>Menggunakan dark chocolate dan topping berkualitas tinggi</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-large">🍪</div>
+                        <h3>Homemade</h3>
+                        <p>Dibuat dengan resep rahasia dan penuh perhatian</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-large">✨</div>
+                        <h3>Higienis</h3>
+                        <p>Proses produksi yang bersih dan terjaga kualitasnya</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-large">💝</div>
+                        <h3>Fresh</h3>
+                        <p>Selalu dibuat fresh untuk setiap pesanan</p>
+                    </div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon-large">🍪</div>
-                    <h3>Homemade</h3>
-                    <p>Dibuat dengan resep rahasia dan penuh perhatian</p>
+            </div>
+    </section>
+
+    <!-- ============================================
+         PILIHAN 1: CARD GRID STYLE (MODERN & CLEAN)
+         ============================================ -->
+
+    <section id="testimoni" class="testimoni-section style-1">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">TESTIMONI PELANGGAN</div>
+                <h2 class="section-title">Apa Kata Mereka?</h2>
+                <p class="section-description">
+                    Kepuasan pelanggan adalah prioritas kami. Berikut cerita dari mereka yang sudah merasakan kelezatan
+                    produk kami.
+                </p>
+            </div>
+
+            <div class="testimonial-grid">
+                <!-- Testimonial Card 1 -->
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/pie-choco-marble.png" alt="Metta">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Metta</h4>
+                            <div class="testimonial-rating">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Aq makan ini. Enak, Bronisnya gak kemanisan, Pinggirannya crunchy enak. Mantaff..
+                        Larismanisss!!"
+                    </p>
+                    <div class="testimonial-date">31 Januari 2026</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon-large">✨</div>
-                    <h3>Higienis</h3>
-                    <p>Proses produksi yang bersih dan terjaga kualitasnya</p>
+
+                <!-- Testimonial Card 2 -->
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/pie-almond.png" alt="Yanti">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Yanti</h4>
+                            <div class="testimonial-rating">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Enak. Manisnya pas, crunchy.. Buat bekal anak anak lumayan ini"
+                    </p>
+                    <div class="testimonial-date">30 Januari 2026</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon-large">💝</div>
-                    <h3>Fresh</h3>
-                    <p>Selalu dibuat fresh untuk setiap pesanan</p>
+
+                <!-- Testimonial Card 3 -->
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/pie-choco-marble.png" alt="Mami Asih">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Mami Asih</h4>
+                            <div class="testimonial-rating">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Pienya enak, crispy. rotinya juga enak"
+                    </p>
+                    <div class="testimonial-date">29 Januari 2026</div>
+                </div>
+
+                <!-- Testimonial Card 4 -->
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/pie-kacang-tanah.png" alt="Mas Dika">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Mas Dika</h4>
+                            <div class="testimonial-rating">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Pie nya enak, rasanya cocok di lidah"
+                    </p>
+                    <div class="testimonial-date">31 Januari 2026</div>
+                </div>
+
+                <!-- Testimonial Card 5 -->
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/pie-choco-marble.png" alt="Ust. Joko Azib">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Ust. Joko Azib</h4>
+                            <div class="testimonial-rating">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Pienya enak ini, pake coklat yang mahal ya ?"
+                    </p>
+                    <div class="testimonial-date">29 Januari 2026</div>
+                </div>
+
+                <!-- Testimonial Card 6 -->
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/pie-kacang-tanah.png" alt="Putri Aisyah">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Putri Aisyah</h4>
+                            <div class="testimonial-rating">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Gila sih ini! Jujur baru kali ini nemu Pie Brownies yang beneran NYOKLAT BANGET! 🍫 Sekali
+                        gigit tuh kerasa banget
+                        coklat premiumnya, legit, dan gak bikin enek sama sekali. Makan satu? Mana cukup! Asli nagih
+                        parah, auto pengen lagi dan
+                        lagi. Dengan harga semurah ini tapi rasanya semewah itu, fix sih ini worth it banget! 💯✨"
+                    </p>
+                    <div class="testimonial-date">31 Januari 2026</div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer id="kontak" class="footer"
@@ -1247,6 +1093,12 @@
                     <p>📱 WhatsApp: 0899-3071-991</p>
                     <p>📧 Email: <a href="mailto:aghasyrezandi@gmail.com.com">Klik aja !</a></p>
                     <p>⏰ Senin - Sabtu: 08.00 - 20.00</p>
+                    <p>📱 Open jasa pembuatan website langsung melalui <a
+                            href="https://wa.me/628993071991?text=Halo%20Nusabit.com,%20saya%20ingin%20dibuatkan%20Website%20dong"
+                            target="_blank" style="color: #C9A961; text-decoration: none; font-weight: 500;">kami</a>
+                        atau masuk ke <a href="https://nusabit.com" target="_blank"
+                            style="color: #C9A961; text-decoration: none; font-weight: 500;">Nusabit.com</a> </p>
+
                 </div>
                 <div class="footer-menu">
                     <h4>Menu</h4>
@@ -1286,6 +1138,19 @@
             </div>
 
             <div class="order-modal-body">
+                <!-- Customer Information Fields -->
+                <div class="customer-info-section">
+                    <div class="form-group">
+                        <label for="customerName">Nama:</label>
+                        <input type="text" id="customerName" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerAddress">Alamat:</label>
+                        <textarea id="customerAddress" placeholder="Masukkan alamat lengkap" rows="3"
+                            required></textarea>
+                    </div>
+                </div>
+
                 <!-- Product 1: Kacang -->
                 <div class="product-select-item" data-product="kacang">
                     <div class="product-select-header">
@@ -1481,7 +1346,22 @@
         }
 
         function submitOrder() {
-            let message = `*PESANAN BARU - PIE NANA*\n\nProduk:\n`;
+            // Get customer information
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerAddress = document.getElementById('customerAddress').value.trim();
+
+            // Validate customer information
+            if (!customerName || !customerAddress) {
+                alert('Mohon lengkapi nama dan alamat terlebih dahulu.');
+                return;
+            }
+
+            let message = `*PESANAN BARU - PIE NANA*\n\n`;
+            message += `Nama: ${customerName}\n`;
+            message += `Alamat: ${customerAddress}\n\n`;
+            message += `Pesanan:\n`;
+            message += `Produk:\n`;
+
             let total = 0;
             let itemCount = 0;
 
@@ -1499,7 +1379,7 @@
             });
 
             message += `\nTotal: *${formatRupiah(total)}*\n`;
-            message += `*Belum termasuk ongkos kirim*\n\n`;
+            message += `\n*Belum termasuk ongkos kirim*\n\n`;
             message += `Mohon konfirmasi ketersediaan dan detail pengiriman. Terima kasih!`;
 
             const encodedMessage = encodeURIComponent(message);
