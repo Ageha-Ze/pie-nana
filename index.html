@@ -45,8 +45,8 @@
     <meta property="product:price:currency" content="IDR">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
-    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo1.png">
+    <link rel="apple-touch-icon" href="images/logo1.png">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -61,7 +61,7 @@
                 "url": "https://yourwebsite.com/",
                 "telephone": "+628993071991",
                 "priceRange": "Rp 3.000 - Rp 4.000",
-                "image": "https://yourwebsite.com/images/logo.png",
+                "image": "https://yourwebsite.com/images/logo1.png",
                 "address": {
                     "@type": "PostalAddress",
                     "addressCountry": "ID"
@@ -81,7 +81,7 @@
                 },
                 "logo": {
                     "@type": "ImageObject",
-                    "url": "https://yourwebsite.com/images/logo.png"
+                    "url": "https://yourwebsite.com/images/logo1.png"
                 }
             },
             {
@@ -353,7 +353,7 @@
     <div class="preloader">
         <div class="preloader-content">
             <div class="preloader-logo">
-                <img src="images/logo.png" alt="Pie Nana Loading">
+                <img src="images/logo1.png" alt="Pie Nana Loading">
             </div>
             <div class="preloader-text">Loading...</div>
         </div>
@@ -364,7 +364,7 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
-                    <img src="images/logo.png" alt="Pie Nana Logo">
+                    <img src="images/logo1.png" alt="Pie Nana Logo">
                 </div>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-link">Home</a></li>
@@ -386,7 +386,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero"
-        style="background-image: url('images/hero-background2.png'); background-size: cover; background-position: center;">
+        style="background-image: url('images/hero-background.png'); background-size: cover; background-position: center;">
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
@@ -714,7 +714,7 @@
         </div>
     </section>
 
-    <!-- Packaging Section -->
+    <!-- Packaging Section - HYBRID VERSION WITH HERO SHOWCASE -->
     <section id="packaging" class="packaging-section">
         <div class="container">
             <div class="section-header">
@@ -722,25 +722,36 @@
                 <p class="section-subtitle">Bagaimana Kamu Mendapatkan Pie Kita</p>
             </div>
 
-            <div class="packaging-content">
-                <!-- Image Gallery -->
-                <div class="packaging-gallery">
-                    <div class="packaging-image-grid">
-                        <div class="packaging-image-item">
-                            <img src="images/paket-1.jpg" alt="Pie Nana Packaging 1">
-                            <div class="image-caption">Fresh & Secure</div>
+            <!-- ========================================
+             HERO SHOWCASE - 2 FOTO BARU KAMU
+             ======================================== -->
+            <div class="packaging-hero-showcase">
+                <!-- Main Hero Image - Packaging Box -->
+                <div class="hero-image-large">
+                    <img src="images/packaging-box.jpg" alt="Pie Nana Premium Packaging Box">
+                    <div class="hero-overlay">
+                        <div class="hero-badge">
+                            <span class="badge-icon">📦</span>
+                            <span class="badge-text">Packaging Eksklusif</span>
                         </div>
-                        <div class="packaging-image-item">
-                            <img src="images/paket-2.jpg" alt="Pie Nana Packaging 2">
-                            <div class="image-caption">Bubble Wrap Protection</div>
-                        </div>
-                        <div class="packaging-image-item">
-                            <img src="images/paket-3.jpg" alt="Pie Nana Packaging 3">
-                            <div class="image-caption">Ready to Gift</div>
-                        </div>
+                        <h3>Siap Dikirim dengan Kemasan Premium</h3>
+                        <p>Perfect untuk hajatan, arisan, corporate gift, dan acara spesial lainnya</p>
                     </div>
                 </div>
 
+                <!-- Secondary Hero Image - Fresh Tray -->
+                <div class="hero-image-secondary">
+                    <img src="images/fresh-tray.jpg" alt="Pie Nana Freshly Baked Tray">
+                    <div class="hero-badge-float">
+                        <span>✨ Freshly Baked Daily</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================
+             CONTENT GRID - Text + Features
+             ======================================== -->
+            <div class="packaging-content">
                 <!-- Text Content with Icon List -->
                 <div class="packaging-text">
                     <div class="packaging-header">
@@ -796,8 +807,31 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- CTA Box for Bulk Orders -->
+                <div class="packaging-cta-box">
+                    <div class="cta-icon">🎉</div>
+                    <h4>Pesan dalam Jumlah Banyak?</h4>
+                    <p>Kami melayani pesanan untuk acara spesial, arisan, gathering, hingga corporate hampers dengan
+                        kemasan
+                        yang bisa disesuaikan!</p>
+
+                    <ul class="cta-benefits">
+                        <li>✓ Diskon khusus untuk pembelian 50+ pcs</li>
+                        <li>✓ Custom packaging untuk corporate gift</li>
+                        <li>✓ Free delivery untuk area tertentu</li>
+                        <li>✓ Konsultasi menu & packaging gratis</li>
+                    </ul>
+
+                    <button onclick="openOrderModal()" class="btn btn-cta-primary">
+                        💬 Hubungi Kami untuk Bulk Order
+                    </button>
+                </div>
             </div>
 
+            <!-- ========================================
+             PACKAGING PROCESS
+             ======================================== -->
             <div class="packaging-process">
                 <h3>Proses Pengemasan Kami</h3>
                 <div class="process-steps">
@@ -841,71 +875,73 @@
         </div>
     </section>
 
-    <!-- How to Order Section -->
+
+
+    <!-- How to Order Section - IMPROVED VERSION -->
     <section id="cara-pesan" class="order-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Cara Pemesanan</h2>
-                <p class="section-subtitle">Mudah dan Cepat</p>
+                <p class="section-subtitle">Mudah, Cepat, dan Praktis! Cuma 4 Langkah 🚀</p>
             </div>
 
-            <div class="order-steps">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">💬</div>
-                    <h3>Hubungi Kami</h3>
-                    <p>Klik tombol WhatsApp di bawah atau hubungi nomor kami</p>
-                </div>
+        </div>
 
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">📝</div>
-                    <h3>Pilih Varian</h3>
-                    <p>Tentukan varian dan jumlah pie brownies yang ingin dipesan</p>
-                </div>
-
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">💳</div>
-                    <h3>Konfirmasi Pembayaran</h3>
-                    <p>Lakukan pembayaran sesuai instruksi yang diberikan</p>
-                </div>
-
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <div class="step-icon">🚚</div>
-                    <h3>Terima Pesanan</h3>
-                    <p>Pie brownies siap untuk diantar atau diambil</p>
-                </div>
+        <div class="order-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-icon">💬</div>
+                <h3>Hubungi Kami</h3>
+                <p>Klik tombol "Pesan Sekarang" di bawah atau langsung WA ke 0899-3071-991</p>
             </div>
 
-            <div class="order-cta">
-                <button onclick="openOrderModal()" class="btn btn-whatsapp">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                    </svg>
-                    Pesan via WhatsApp
-                </button>
-                <p class="order-note">Atau hubungi: <strong>0899-3071-991</strong></p>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-icon">📝</div>
+                <h3>Pilih Varian</h3>
+                <p>Tentukan varian favorit (Kacang, Almond, Choco Chips) dan jumlah pesanan</p>
             </div>
 
-            <div class="order-info">
-                <div class="info-box">
-                    <h4>⏰ Waktu Pemesanan</h4>
-                    <p>Minimal H-2 untuk hasil terbaik
-                        (Tergantung pmesanan dan jumlah pesanan)
-                    </p>
-                </div>
-                <div class="info-box">
-                    <h4>📦 Minimum Order</h4>
-                    <p>6 pcs per varian</p>
-                </div>
-                <div class="info-box">
-                    <h4>🏠 Area Pengiriman</h4>
-                    <p>Sesuai kesepakatan</p>
-                </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-icon">💳</div>
+                <h3>Konfirmasi Pembayaran</h3>
+                <p>Transfer sesuai total pesanan, kirim bukti bayar, dan tunggu konfirmasi</p>
             </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-icon">🚚</div>
+                <h3>Terima Pesanan</h3>
+                <p>Pie brownies fresh siap diantar atau bisa diambil langsung!</p>
+            </div>
+        </div>
+
+        <div class="order-cta">
+            <button onclick="openOrderModal()" class="btn btn-whatsapp">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                </svg>
+                Pesan Sekarang via WhatsApp
+            </button>
+            <p class="order-note">💬 Atau chat langsung: <strong>0899-3071-991</strong></p>
+        </div>
+
+        <div class="order-info">
+            <div class="info-box">
+                <h4>⏰ Waktu Pemesanan</h4>
+                <p>Order H-1 untuk hasil terbaik<br><small>(Tergantung ketersediaan slot)</small></p>
+            </div>
+            <div class="info-box">
+                <h4>📦 Minimum Order</h4>
+                <p>Hanya 6 pcs per varian<br><small>Bisa campur varian!</small></p>
+            </div>
+            <div class="info-box">
+                <h4>🏠 Area Pengiriman</h4>
+                <p>Sesuai kesepakatan<br><small>Free ongkir area tertentu*</small></p>
+            </div>
+        </div>
         </div>
     </section>
 
@@ -1082,12 +1118,12 @@
 
     <!-- Footer -->
     <footer id="kontak" class="footer"
-        style="background-image: url('images/hero-background2.png'); background-size: cover; background-position: center;">
+        style="background-image: url('images/hero-background4.png'); background-size: cover; background-position: center;">
         <div class="footer-overlay"></div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <img src="images/logo.png" alt="Pie Nana Logo" class="footer-logo"
+                    <img src="images/logo1.png" alt="Pie Nana Logo" class="footer-logo"
                         style="filter: brightness(0.8); opacity: 0.9;">
                     <p>Pie Brownies Premium dengan Dark Chocolate berkualitas. Nikmati kelezatan dalam setiap gigitan.
                     </p>
