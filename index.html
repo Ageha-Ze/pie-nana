@@ -45,8 +45,8 @@
     <meta property="product:price:currency" content="IDR">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logo1.png">
-    <link rel="apple-touch-icon" href="images/logo1.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logopie.png">
+    <link rel="apple-touch-icon" href="images/logopie.png">
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -61,7 +61,7 @@
                 "url": "https://yourwebsite.com/",
                 "telephone": "+628993071991",
                 "priceRange": "Rp 3.000 - Rp 4.000",
-                "image": "https://yourwebsite.com/images/logo1.png",
+                "image": "https://yourwebsite.com/images/logopie.png",
                 "address": {
                     "@type": "PostalAddress",
                     "addressCountry": "ID"
@@ -81,7 +81,7 @@
                 },
                 "logo": {
                     "@type": "ImageObject",
-                    "url": "https://yourwebsite.com/images/logo1.png"
+                    "url": "https://yourwebsite.com/images/logopie.png"
                 }
             },
             {
@@ -353,7 +353,7 @@
     <div class="preloader">
         <div class="preloader-content">
             <div class="preloader-logo">
-                <img src="images/logo1.png" alt="Pie Nana Loading">
+                <img src="images/logopie.png" alt="Pie Nana Loading">
             </div>
             <div class="preloader-text">Loading...</div>
         </div>
@@ -364,13 +364,13 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
-                    <img src="images/logo1.png" alt="Pie Nana Logo">
+                    <img src="images/logopie.png" alt="Pie Nana Logo">
                 </div>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#dark-chocolate" class="nav-link">Dark Chocolate</a></li>
-                    <li><a href="#produk" class="nav-link">Produk</a></li>
-                    <li><a href="#bahan" class="nav-link">Bahan Premium</a></li>
+                    <li><a href="#produk" class="nav-link">Pie Brownies</a></li>
+                    <li><a href="#pie-susu" class="nav-link">Pie Susu</a></li>
                     <li><a href="#packaging" class="nav-link">Packaging</a></li>
                     <li><a href="#cara-pesan" class="nav-link">Cara Pesan</a></li>
                     <li><a href="#kontak" class="nav-link">Kontak</a></li>
@@ -386,7 +386,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero"
-        style="background-image: url('images/hero-background.png'); background-size: cover; background-position: center;">
+        style="background-image: url('images/hero-background2.png'); background-size: cover; background-position: center;">
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
@@ -461,7 +461,7 @@
     </section>
 
     <!-- Premium Chocolate Banner -->
-    <section class="premium-chocolate-banner" style="background-image: url('images/choco-banner.jpg');">
+    <section class="premium-chocolate-banner" style="background-image: url('images/piebrowniesbanner.jpg');">
         <div class="container">
             <h2 class="banner-title">Pie Brownies Coklat Premium</h2>
         </div>
@@ -609,6 +609,73 @@
         </div>
     </section>
 
+    <!-- Pie Susu Section -->
+    <section id="pie-susu" class="pie-susu-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Menu Pie Susu Kami</h2>
+                <p class="section-subtitle">Kulit Renyah, Isian Creamy yang Manis & Lembut</p>
+            </div>
+
+            <!-- Hero Banner Pie Susu -->
+            <div class="pie-susu-hero">
+                <div class="pie-susu-hero-image">
+                    <img src="images/piesusuhero.jpg" alt="Pie Susu Pie Nana">
+                    <div class="pie-susu-hero-overlay">
+                        <div class="pie-susu-hero-badge">🥧 NEW</div>
+                        <h3>Pie Susu Original</h3>
+                        <p>Kulit renyah dengan isian creamy yang manis dan lembut</p>
+                    </div>
+                </div>
+                <div class="pie-susu-hero-info">
+                    <h3>Tentang Pie Susu Kami</h3>
+                    <p>Kami hadirkan Pie Susu dengan cita rasa autentik — kulit pie yang renyah berpadu dengan isian
+                        susu creamy yang lembut dan manis. Dibuat dari bahan pilihan, fresh setiap hari.</p>
+                    <div class="pie-susu-badges">
+                        <span class="feature-tag">🥛 Creamy</span>
+                        <span class="feature-tag">🍰 Lembut</span>
+                        <span class="feature-tag">✨ Fresh Daily</span>
+                        <span class="feature-tag">🏆 Premium</span>
+                    </div>
+                    <div class="pie-susu-cta-mini">
+                        <p class="pie-susu-price-label">Mulai dari <strong>Rp 3.000 / pcs</strong></p>
+                        <button onclick="openOrderModal()" class="btn btn-primary" style="margin-top:12px;">Pesan
+                            Sekarang</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Cards Pie Susu -->
+            <div class="products-grid" style="margin-top: 48px;">
+                <!-- Pie Susu Original -->
+                <div class="product-card scroll-reveal">
+                    <div class="product-image">
+                        <img src="images/piesusu.jpg" alt="Pie Susu Original">
+                        <div class="product-badge">Original</div>
+                        <div class="product-badge-left">🔥 Bestseller</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Pie Susu Original</h3>
+                        <p class="product-description">
+                            Pie susu klasik dengan kulit pie renyah dan isian susu creamy yang manis dan lembut. Rasa
+                            autentik yang selalu bikin kangen.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag">Creamy</span>
+                            <span class="feature-tag">Classic</span>
+                            <span class="feature-tag">Lembut</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">Rp 3.000</span>
+                            <button onclick="openOrderModal()" class="btn btn-order">Pesan</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Premium Ingredients Section -->
     <section id="bahan" class="ingredients-section">
         <div class="container">
@@ -726,16 +793,41 @@
              HERO SHOWCASE - 2 FOTO BARU KAMU
              ======================================== -->
             <div class="packaging-hero-showcase">
-                <!-- Main Hero Image - Packaging Box -->
-                <div class="hero-image-large">
-                    <img src="images/packaging-box.jpg" alt="Pie Nana Premium Packaging Box">
-                    <div class="hero-overlay">
-                        <div class="hero-badge">
-                            <span class="badge-icon">📦</span>
-                            <span class="badge-text">Packaging Eksklusif</span>
+                <!-- Packaging Carousel -->
+                <div class="hero-image-large packaging-carousel-wrap">
+                    <div class="packaging-carousel">
+                        <div class="pkg-carousel-slides">
+                            <div class="pkg-carousel-slide active">
+                                <img src="images/packaging-box.jpg" alt="Pie Nana Premium Packaging Box">
+                                <div class="hero-overlay">
+                                    <div class="hero-badge">
+                                        <span class="badge-icon">📦</span>
+                                        <span class="badge-text">Packaging Eksklusif</span>
+                                    </div>
+                                    <h3>Siap Dikirim dengan Kemasan Premium</h3>
+                                    <p>Perfect untuk hajatan, arisan, corporate gift, dan acara spesial lainnya</p>
+                                </div>
+                            </div>
+                            <div class="pkg-carousel-slide">
+                                <img src="images/bakepiesusu.jpg" alt="Pie Nana Freshly Baked">
+                                <div class="hero-overlay">
+                                    <div class="hero-badge">
+                                        <span class="badge-icon">🔥</span>
+                                        <span class="badge-text">Fresh Setiap Hari</span>
+                                    </div>
+                                    <h3>Baked with Love</h3>
+                                    <p>Dibuat fresh setiap hari dengan bahan premium pilihan</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3>Siap Dikirim dengan Kemasan Premium</h3>
-                        <p>Perfect untuk hajatan, arisan, corporate gift, dan acara spesial lainnya</p>
+                        <!-- Dots -->
+                        <div class="pkg-carousel-dots">
+                            <span class="pkg-dot active" onclick="goPkgSlide(0)"></span>
+                            <span class="pkg-dot" onclick="goPkgSlide(1)"></span>
+                        </div>
+                        <!-- Arrows -->
+                        <button class="carousel-arrow carousel-prev" onclick="prevPkgSlide()">&#8249;</button>
+                        <button class="carousel-arrow carousel-next" onclick="nextPkgSlide()">&#8250;</button>
                     </div>
                 </div>
 
@@ -931,7 +1023,7 @@
         <div class="order-info">
             <div class="info-box">
                 <h4>⏰ Waktu Pemesanan</h4>
-                <p>Order H-1 untuk hasil terbaik<br><small>(Tergantung ketersediaan slot)</small></p>
+                <p>Order H-2 untuk hasil terbaik<br><small>(Tergantung ketersediaan slot)</small></p>
             </div>
             <div class="info-box">
                 <h4>📦 Minimum Order</h4>
@@ -1123,7 +1215,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <img src="images/logo1.png" alt="Pie Nana Logo" class="footer-logo"
+                    <img src="images/logopie.png" alt="Pie Nana Logo" class="footer-logo"
                         style="filter: brightness(0.8); opacity: 0.9;">
                     <p>Pie Brownies Premium dengan Dark Chocolate berkualitas. Nikmati kelezatan dalam setiap gigitan.
                     </p>
@@ -1131,7 +1223,9 @@
                 <div class="footer-contact">
                     <h4>Hubungi Kami</h4>
                     <p>📱 WhatsApp: 0899-3071-991</p>
-                    <p>📧 Email: <a href="mailto:aghasyrezandi@gmail.com.com">Klik aja !</a></p>
+                    <p>📧 Email: <a
+                            href="/cdn-cgi/l/email-protection#0564626d64767c77607f646b616c456268646c692b666a682b666a68">Klik
+                            aja !</a></p>
                     <p>⏰ Senin - Sabtu: 08.00 - 20.00</p>
                     <p>📱 Open jasa pembuatan website langsung melalui <a
                             href="https://wa.me/628993071991?text=Halo%20Nusabit.com,%20saya%20ingin%20dibuatkan%20Website%20dong"
@@ -1254,6 +1348,37 @@
                     </div>
                 </div>
 
+                <!-- Divider Pie Susu -->
+                <div
+                    style="margin: 16px 0 8px; padding: 8px 12px; background: linear-gradient(135deg, #f9f3e8, #fdf8f0); border-radius: 8px; border-left: 3px solid #C9A961;">
+                    <p
+                        style="margin:0; font-weight: 700; font-size: 13px; color: #6B4423; text-transform: uppercase; letter-spacing: 0.5px;">
+                        🥧 Pie Susu</p>
+                </div>
+
+                <!-- Product 4: Pie Susu Original -->
+                <div class="product-select-item" data-product="susu-original">
+                    <div class="product-select-header">
+                        <input type="checkbox" class="product-checkbox" id="check-susu-original"
+                            onchange="toggleProduct('susu-original')">
+                        <div class="product-info">
+                            <div class="product-name">Pie Susu Original</div>
+                            <div class="product-price">Rp 3.000 / pcs</div>
+                        </div>
+                    </div>
+                    <div class="quantity-control">
+                        <span class="quantity-label">Jumlah:</span>
+                        <div class="quantity-input-group">
+                            <button class="quantity-btn minus" onclick="changeQty('susu-original', -1)">−</button>
+                            <input type="number" class="quantity-input" id="qty-susu-original" value="6" min="6"
+                                onchange="updateTotal()">
+                            <button class="quantity-btn plus" onclick="changeQty('susu-original', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Pie Susu Baked removed - same as Original -->
+
                 <!-- Order Summary -->
                 <div class="order-summary" id="orderSummary" style="display: none;">
                     <div id="summaryItems"></div>
@@ -1285,7 +1410,72 @@
         </div>
     </div>
 
+    <!-- Packaging Carousel Script -->
+    <script>
+        let pkgCurrentSlide = 0;
+        const pkgTotalSlides = 2;
+        let pkgTimer;
+
+        function updatePkgCarousel() {
+            const slides = document.querySelectorAll('.pkg-carousel-slide');
+            const dots = document.querySelectorAll('.pkg-dot');
+            slides.forEach((s) => {
+                s.classList.remove('active');
+                const img = s.querySelector('img');
+                img.style.animation = 'none';
+                img.offsetHeight;
+                img.style.animation = '';
+            });
+            slides[pkgCurrentSlide].classList.add('active');
+            dots.forEach((d, i) => d.classList.toggle('active', i === pkgCurrentSlide));
+            document.querySelector('.pkg-carousel-slides').style.transform = `translateX(-${pkgCurrentSlide * 100}%)`;
+        }
+
+        function nextPkgSlide() {
+            pkgCurrentSlide = (pkgCurrentSlide + 1) % pkgTotalSlides;
+            updatePkgCarousel();
+            resetPkgTimer();
+        }
+
+        function prevPkgSlide() {
+            pkgCurrentSlide = (pkgCurrentSlide - 1 + pkgTotalSlides) % pkgTotalSlides;
+            updatePkgCarousel();
+            resetPkgTimer();
+        }
+
+        function goPkgSlide(index) {
+            pkgCurrentSlide = index;
+            updatePkgCarousel();
+            resetPkgTimer();
+        }
+
+        function resetPkgTimer() {
+            clearInterval(pkgTimer);
+            pkgTimer = setInterval(nextPkgSlide, 5000);
+        }
+
+        pkgTimer = setInterval(nextPkgSlide, 5000);
+    </script>
+
+    <!-- Pie Susu Parallax Script -->
+    <script>
+        function applyPieSusuParallax() {
+            const section = document.getElementById('pie-susu');
+            if (!section) return;
+            const rect = section.getBoundingClientRect();
+            const windowH = window.innerHeight;
+            if (rect.bottom < 0 || rect.top > windowH) return;
+            const scrolled = (windowH - rect.top) / (windowH + rect.height);
+            const offset = (scrolled - 0.5) * 60;
+            const heroImg = section.querySelector('.pie-susu-hero-image img');
+            if (heroImg) heroImg.style.marginTop = offset + 'px';
+        }
+        window.addEventListener('scroll', applyPieSusuParallax, { passive: true });
+        applyPieSusuParallax();
+    </script>
+
     <!-- Scripts -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="js/script.js"></script>
 
     <!-- Order Modal Script -->
@@ -1295,7 +1485,8 @@
         const products = {
             'kacang': { name: 'Pie Brownies Topping Kacang', price: 4000 },
             'choco': { name: 'Pie Brownies Topping Choco Chips', price: 3500 },
-            'almond': { name: 'Pie Brownies Topping Kacang Almond', price: 4000 }
+            'almond': { name: 'Pie Brownies Topping Kacang Almond', price: 4000 },
+            'susu-original': { name: 'Pie Susu Original', price: 3000 }
         };
 
         function openOrderModal() {
@@ -1434,7 +1625,7 @@
 
         // Close modal when clicking outside
         document.getElementById('orderModal').addEventListener('click', function (e) {
-            if (e.target.id === 'orderModal') {
+            if (e.target === this) {
                 closeOrderModal();
             }
         });
