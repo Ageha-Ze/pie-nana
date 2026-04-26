@@ -386,7 +386,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero"
-        style="background-image: url('images/hero-background2.png'); background-size: cover; background-position: center;">
+        style="background-image: url('images/pies2.png'); background-size: cover; background-position: center;">
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
@@ -609,12 +609,13 @@
         </div>
     </section>
 
-    <!-- Pie Susu Section -->
-    <section id="pie-susu" class="pie-susu-section">
+    <!-- Nana's Signature Section -->
+    <section id="signature" class="signature-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Menu Pie Susu Kami</h2>
-                <p class="section-subtitle">Kulit Renyah, Isian Creamy yang Manis & Lembut</p>
+                <div class="content-badge">Premium Collection</div>
+                <h2 class="section-title">Nana's Signature</h2>
+                <p class="section-subtitle">Koleksi eksklusif hasil racikan spesial Nana</p>
             </div>
 
             <!-- Hero Banner Pie Susu -->
@@ -647,7 +648,6 @@
 
             <!-- Product Cards Pie Susu -->
             <div class="products-grid" style="margin-top: 48px;">
-                <!-- Pie Susu Original -->
                 <div class="product-card scroll-reveal">
                     <div class="product-image">
                         <img src="images/piesusu.jpg" alt="Pie Susu Original">
@@ -671,10 +671,23 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
+
+        <!-- Signature Banner — di LUAR .container biar full width -->
+        <div class="signature-hero-banner scroll-reveal">
+            <img src="images/brownies-topping-banner.png" alt="Signature Choco Almond Brownies" loading="lazy">
+            <div class="signature-hero-overlay"></div>
+            <div class="signature-hero-cta">
+                <button onclick="openOrderModal()" class="btn btn-primary">
+                    Nikmati Sekarang
+                </button>
+            </div>
+        </div>
+
     </section>
+
+
 
     <!-- Premium Ingredients Section -->
     <section id="bahan" class="ingredients-section">
@@ -1377,7 +1390,34 @@
                     </div>
                 </div>
 
-                <!-- Product 5: Pie Susu Baked removed - same as Original -->
+                <!-- Divider Signature Series -->
+                <div
+                    style="margin: 16px 0 8px; padding: 8px 12px; background: linear-gradient(135deg, #6B4423, #3E2723); border-radius: 8px; border-left: 3px solid #C9A961;">
+                    <p
+                        style="margin:0; font-weight: 700; font-size: 13px; color: #C9A961; text-transform: uppercase; letter-spacing: 0.5px;">
+                        ✨ SIGNATURE SERIES</p>
+                </div>
+
+                <!-- Product 5: Signature Choco Almond Brownies -->
+                <div class="product-select-item" data-product="signature-brownies">
+                    <div class="product-select-header">
+                        <input type="checkbox" class="product-checkbox" id="check-signature-brownies"
+                            onchange="toggleProduct('signature-brownies')">
+                        <div class="product-info">
+                            <div class="product-name">Signature Choco Almond Brownies</div>
+                            <div class="product-price">Rp 10.000 / pcs</div>
+                        </div>
+                    </div>
+                    <div class="quantity-control">
+                        <span class="quantity-label">Jumlah:</span>
+                        <div class="quantity-input-group">
+                            <button class="quantity-btn minus" onclick="changeQty('signature-brownies', -1)">−</button>
+                            <input type="number" class="quantity-input" id="qty-signature-brownies" value="6" min="6"
+                                onchange="updateTotal()">
+                            <button class="quantity-btn plus" onclick="changeQty('signature-brownies', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Order Summary -->
                 <div class="order-summary" id="orderSummary" style="display: none;">
@@ -1486,7 +1526,8 @@
             'kacang': { name: 'Pie Brownies Topping Kacang', price: 4000 },
             'choco': { name: 'Pie Brownies Topping Choco Chips', price: 3500 },
             'almond': { name: 'Pie Brownies Topping Kacang Almond', price: 4000 },
-            'susu-original': { name: 'Pie Susu Original', price: 3000 }
+            'susu-original': { name: 'Pie Susu Original', price: 3000 },
+            'signature-brownies': { name: 'Signature Choco Almond Brownies', price: 10000 }
         };
 
         function openOrderModal() {
