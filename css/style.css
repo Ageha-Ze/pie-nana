@@ -4030,13 +4030,13 @@ p {
 @media (max-width: 768px) {
     .signature-hero-banner {
         height: auto;
-        /* ngikutin tinggi layar HP */
         margin-top: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .signature-hero-banner img {
         position: relative;
-        /* bukan absolute lagi */
         inset: unset;
         width: 100%;
         height: auto;
@@ -4044,11 +4044,14 @@ p {
     }
 
     .signature-hero-cta {
-        bottom: 8%;
-        left: 50%;
-        transform: translateX(-50%);
+        position: relative;
+        bottom: unset;
+        left: unset;
+        transform: none;
         width: 100%;
         text-align: center;
+        padding: 20px 0;
+        background: var(--dark-chocolate);
     }
 
     .signature-hero-cta .btn {
@@ -4059,7 +4062,7 @@ p {
 
 @media (max-width: 480px) {
     .signature-hero-banner {
-        height: 100svh;
+        height: auto;
     }
 
     .signature-hero-cta .btn {
